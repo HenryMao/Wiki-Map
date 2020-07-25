@@ -1,12 +1,13 @@
 // See: https://sass-lang.com/
 
 body {
-  background-color: #EEE;
+
 
   h1 {
     color: rebeccapurple;
   }
 }
+
 
 //Temp code, move to _navbar partials//
 $defaultFont: "Helvetica", sans-serif;
@@ -107,5 +108,9 @@ nav {
       }
     }
   }
+}
+
+#map{
+  height:400px;
 }
 
