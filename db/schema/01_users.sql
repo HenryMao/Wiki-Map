@@ -11,26 +11,29 @@ CREATE TABLE users (
   email VARCHAR(255)
 );
 --actual locations
+-- CREATE TABLE pins (
+--   id SERIAL PRIMARY KEY NOT NULL,
+--   map_id INTEGER REFERENCES map(id) ON DELETE CASCADE,
+--   latitude1 float,
+--   longitude1 float,
+--   latitude2 float,
+--   longitude2 float,
+--   latitude3 float,
+--   longitude3 float,
+--   latitude4 float,
+--   longitude4 float,
+--   latitude5 float,
+--   longitude5 float,
+--   latitude6 float,
+--   longitude6 float
+-- );
+--map of pins
 CREATE TABLE pins (
   id SERIAL PRIMARY KEY NOT NULL,
-  map_id INTEGER REFERENCES map(id) ON DELETE CASCADE,
-  latitude1 float,
-  longitude1 float,
-  latitude2 float,
-  longitude2 float,
-  latitude3 float,
-  longitude3 float,
-  latitude4 float,
-  longitude4 float,
-  latitude5 float,
-  longitude5 float,
-  latitude6 float,
-  longitude6 float
-);
---map of pins
-CREATE TABLE maps (
-  id SERIAL PRIMARY KEY NOT NULL,
+  user VARCHAR(255),
   name VARCHAR(255),
+  description VARCHAR(255),
+  img VARCHAR(255),
   latitude float,
   longitude float
 );

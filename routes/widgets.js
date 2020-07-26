@@ -15,7 +15,7 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     console.log(req);
     let insert = `INSERT INTO maps (id, latitude, longitude)
-    VALUES (5,${req.body.lat},${req.body.lng}) RETURNING *`;
+    VALUES (${req.body.id},${req.body.lat},${req.body.lng}) RETURNING *`;
     db.query(insert)
       .then(data => {
         const pinned = data.rows;
@@ -30,4 +30,16 @@ module.exports = (db) => {
   return router;
 };
 
-///(2,${req.body.lat},${req.body.lng})
+
+
+
+
+
+
+
+
+
+
+
+
+
