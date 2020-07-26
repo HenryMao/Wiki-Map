@@ -23,7 +23,9 @@ CREATE TABLE pins (
   latitude4 float,
   longitude4 float,
   latitude5 float,
-  longitude5 float
+  longitude5 float,
+  latitude6 float,
+  longitude6 float
 );
 --map of pins
 CREATE TABLE maps (

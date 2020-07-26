@@ -39,8 +39,8 @@ const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/map", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/test", usersRoutes(db));
+app.use("/edit1", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -48,12 +48,15 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("home");
   //res.sendFile("/vagrant/midterm/wiki-map/views/index.html");
 });
 
-app.get("/home", (req,res) => {
+app.get("/map", (req,res) => {
   res.render("map");
+})
+app.get("/edit", (req,res) => {
+  res.render("edit");
 })
 
 app.listen(PORT, () => {

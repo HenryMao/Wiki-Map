@@ -9,13 +9,15 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    let query = `SELECT * FROM widgets`;
-    console.log(query);
-    db.query(query)
+
+  router.post("/", (req, res) => {
+    console.log(req);
+    let insert = `INSERT INTO maps (id, latitude, longitude)
+    VALUES (5,${req.body.lat},${req.body.lng}) RETURNING *`;
+    db.query(insert)
       .then(data => {
-        const widgets = data.rows;
-        res.json({ widgets });
+        const pinned = data.rows;
+        res.json({ pinned });
       })
       .catch(err => {
         res
@@ -25,3 +27,5 @@ module.exports = (db) => {
   });
   return router;
 };
+
+///(2,${req.body.lat},${req.body.lng})
