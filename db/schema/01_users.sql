@@ -13,15 +13,22 @@ CREATE TABLE users (
 --actual locations
 CREATE TABLE pins (
   id SERIAL PRIMARY KEY NOT NULL,
-  location_title TEXT,
-  image_url VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
-  address VARCHAR(255) NOT NULL
-  -- API (longitude, lattitue)?
+  map_id INTEGER REFERENCES map(id) ON DELETE CASCADE,
+  latitude1 float,
+  longitude1 float,
+  latitude2 float,
+  longitude2 float,
+  latitude3 float,
+  longitude3 float,
+  latitude4 float,
+  longitude4 float,
+  latitude5 float,
+  longitude5 float
 );
 --map of pins
 CREATE TABLE maps (
   id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255),
   latitude float,
   longitude float
 );

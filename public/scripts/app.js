@@ -2,6 +2,7 @@
 
 $(document).ready(function(){
 
+
   let greenIcon = L.icon({
     iconUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F299087%2Fmap_marker_icon&psig=AOvVaw1UvUEg2RNJNc-p0-HuLXak&ust=1595734007594000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNDe3se65-oCFQAAAAAdAAAAABAD',
     shadowUrl: '',
@@ -24,6 +25,7 @@ $(document).ready(function(){
 
 
 
+
     $('#toMap').click(() =>{
       $.ajax({
         method: "GET",
@@ -40,7 +42,10 @@ $(document).ready(function(){
           zoomOffset: -1,
           accessToken: 'pk.eyJ1IjoiaGVucnltYW8iLCJhIjoiY2tkMHh6enBjMHJ4NTJ4bG9nYWtweDcwdiJ9.nfHhyyhan06wSZYoqdayhA'
       }).addTo(mymap);
-          L.marker([res.result[0].latitude, res.result[0].longitude]).addTo(mymap);
+          let marker = L.marker([res.result[0].latitude, res.result[0].longitude])
+          marker.addTo(mymap);
+          var popup = L.popup().setContent("okay nice popup");
+          marker.bindPopup(popup).openPopup();
       });;
     })
 
