@@ -1,0 +1,20 @@
+server.js File
+HomePage
+app.get /
+app.get /login/:id
+app.get /profile
+app.post /logout
+
+Build in routes/users.js
+routes.
+.get /
+.get/map/:id
+.get/markers/:id
+.post/maps
+.post/maps:id/markers
+.post/favorites
+.get/profile
+
+EDIT
+.post/markers:id
+.post/markers:id/delete
