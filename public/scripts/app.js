@@ -30,5 +30,6 @@ $(document).ready(function(){
       accessToken: 'pk.eyJ1IjoiaGVucnltYW8iLCJhIjoiY2tkMHh6enBjMHJ4NTJ4bG9nYWtweDcwdiJ9.nfHhyyhan06wSZYoqdayhA'
   }).addTo(mymap);
   L.marker([49.02, -122.7]).addTo(mymap);
+
 });
 
