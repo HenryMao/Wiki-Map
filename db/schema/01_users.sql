@@ -30,7 +30,8 @@ CREATE TABLE users (
 --map of pins
 CREATE TABLE pins (
   id SERIAL PRIMARY KEY NOT NULL,
-  user VARCHAR(255),
+  map_id INTEGER,
+  username VARCHAR(255),
   name VARCHAR(255),
   description VARCHAR(255),
   img VARCHAR(255),

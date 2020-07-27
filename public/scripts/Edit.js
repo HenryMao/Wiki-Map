@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-  let counter = 30;
+  let counter = 0;
   let mymap = L.map('map').setView([49.260761, -123.115662], 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -14,7 +14,7 @@ $(document).ready(()=>{
     console.log(coord.latlng);
     $.ajax({
       method: "POST",
-      url: "/edit1",
+      url: "/edit/create",
       data: {id: counter, lat: coord.latlng.lat, lng: coord.latlng.lng}
     }).done((res) => {
       console.log("????");
