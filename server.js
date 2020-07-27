@@ -52,9 +52,9 @@ app.get("/", (req, res) => {
   //res.sendFile("/vagrant/midterm/wiki-map/views/index.html");
 });
 
-// app.get("/map", (req,res) => {
-//   res.render("map");
-// })
+app.get("/profile", (req,res) => {
+  res.render("profile");
+})
 // app.get("/edit", (req,res) => {
 //   res.render("edit");
 // })
