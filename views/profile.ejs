@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Profile Page</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,18 +31,61 @@
     crossorigin=""></script>
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
   </head>
-
-
 
   <body>
     <%- include('partials/_navbar') %>
   <div class="container-fluid">
+    <div class="card w-75">
+      <div class="card-body">
+        <h5 class="card-title">Create A New Map</h5>
+        <p class="card-text">Pin your favorite locations on your own custom map</p>
+        <button type="submit" class="btn btn-success">Create</button>
+      </div>
+    </div>
 
+  <h1>USER Container Below</h1>
+  <main>
+  <section class="container-client">
+      <header>
+        <h3>User Name</h3>
+        <h3>Map Name</h3>
+
+      </header>
+        <p>map photo or icon</p>
+          <div>
+            <h5>Favorite Maps</h5>
+            <ul>
+              <li>Link 1</li>
+              <li>Link 2</li>
+              <li>link 3</li>
+            </ol>
+          </div>
+          <div>
+            <h5>My Map Creations</h5>
+            <ul>
+              <li>Link 1</li>
+              <li>Link 2</li>
+              <li>link 3</li>
+            </ol>
+          </div>
+          <div>
+            <ul class="list-group">
+              <li class="list-group-item active">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Morbi leo risus</li>
+              <li class="list-group-item">Porta ac consectetur ac</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
+
+      <footer>
+        <h4>Footer Placeholder</h4>
+
+      </footer>
+    </section>
+  </main>
   </div>
-
-
-
-</div>
   </body>
 </html>

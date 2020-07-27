@@ -1,17 +1,17 @@
-// See: https://sass-lang.com/
-//@import "partials/_cards"
+@import 'partials/_profile';
 
 body {
 
-  //background-color: #EEE;
   h1 {
     color: rebeccapurple;
   }
 }
+
 #map {
   height: 600px;
 
 }
+
 
 
 #editMapFoot{

@@ -66,6 +66,11 @@ app.post("/login", (req, res) =>{
   res.redirect("/");
 })
 
+
+app.get("/profile", (req,res) => {
+  res.render("profile");
+})
+
 app.post("/logout", (req, res) =>{
   req.session.user_id = null;
   res.redirect("/");
@@ -77,6 +82,7 @@ app.post("/logout", (req, res) =>{
 // app.get("/map", (req,res) => {
 //   res.render("map");
 // })
+
 // app.get("/edit", (req,res) => {
 //   res.render("edit");
 // })
