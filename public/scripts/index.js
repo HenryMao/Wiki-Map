@@ -21,9 +21,11 @@ $(document).ready(() => {
     })
   })
 
-  $("#loginButton").click(function(event) {
+  $("#loginButton").on("click", function(event) {
     event.preventDefault();
-    console.log("clicked");
-    $("dropHeader").slideDown(400);
+    $("#dropHeader").slideDown(400);
   })
+  // $("#loginButton").on( "click", function() {
+  //   $(this).console.log("Button was clicked");
+  // });
 })
