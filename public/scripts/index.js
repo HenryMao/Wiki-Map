@@ -18,9 +18,13 @@ $(document).ready(() => {
   //     console.log(err);
   //   })
   // })
-  $("#loginButton").on("click", function(event) {
+  $("#login").on("submit", function(event) {
     event.preventDefault();
     $("#dropHeader").slideDown(400);
+    $("#greetings").prepend(`<h2>Hi ${$("#usernameField").val()}!</h2>`);
+    $("#nameDisplay").text(`${$("#usernameField").val()}`);
+    $("#usernameField").hide();
+    $("#profileLink").show();
   })
 
 
