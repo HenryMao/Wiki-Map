@@ -13,9 +13,9 @@ body {
 
 }
 
-#dropHeader {
-  display: none;
-}
-#profileLink {
-  display: none;
+
+#editMapFoot{
+  display:flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
