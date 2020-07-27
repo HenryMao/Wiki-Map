@@ -1,14 +1,15 @@
 // See: https://sass-lang.com/
-//@import "partials/_cards"
+@import "partials/_header";
 
 body {
 
-  //background-color: #EEE;
   h1 {
     color: rebeccapurple;
   }
 }
+
 #map {
   height: 600px;
 
 }
+

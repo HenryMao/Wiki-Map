@@ -20,4 +20,10 @@ $(document).ready(() => {
       console.log(err);
     })
   })
+
+  $("#loginButton").click(function(event) {
+    event.preventDefault();
+    console.log("clicked");
+    $("dropHeader").slideDown(400);
+  })
 })
