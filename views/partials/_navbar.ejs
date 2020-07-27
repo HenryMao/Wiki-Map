@@ -20,7 +20,9 @@
 
 
         <%if(loginVar){%>
-        <a class="nav-link" id = "profileLink" href="/edit">Profile</a>
+        <form class="form-inline my-2 my-lg-0" id = "profilePage" action ="/profile" method="GET">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Profile</button>
+        </form>
         <%}%>
       </li>
     </ul>

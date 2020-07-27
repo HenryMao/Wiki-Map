@@ -60,15 +60,14 @@ app.get("/", (req, res) => {
 });
 app.post("/login", (req, res) =>{
   console.log("before assign", req.body.user)
-  req.session.user_id = req.body.user;
   let loginVar = req.session.user_id;
-  console.log("after assign", loginVar);
   res.redirect("/");
 })
 
 
 app.get("/profile", (req,res) => {
-  res.render("profile");
+  let loginVar = req.session.user_id;
+  res.render("profile", {loginVar});
 })
 
 app.post("/logout", (req, res) =>{
@@ -79,9 +78,10 @@ app.post("/logout", (req, res) =>{
 // app.post("/edit/retrieve", (req, res) =>{
 //   console.log(req.body);
 // })
-// app.get("/map", (req,res) => {
-//   res.render("map");
-// })
+app.get("/map", (req,res) => {
+  let loginVar = req.session.user_id;
+  res.render("map", {loginVar});
+})
 
 // app.get("/edit", (req,res) => {
 //   res.render("edit");
