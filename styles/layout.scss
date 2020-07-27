@@ -12,13 +12,10 @@ body {
 
 }
 
-#dropHeader {
-  display: none;
-}
-.hide {
-  display: none !important;
-}
 
-#nameDisplay {
-  padding-right: 10px;
+
+#editMapFoot{
+  display:flex;
+  justify-content: space-between;
+  flex-direction: row;
 }

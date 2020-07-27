@@ -1,9 +1,7 @@
 $(document).ready(()=>{
   let counter = 0;
-  let pinCount = 5;
-  let latArr = [];
-  let lngArr = [];
-  let idArr = [];
+  let coordObj = {};
+  let map_id = 0;
   let mymap = L.map('map').setView([49.260761, -123.115662], 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -13,22 +11,29 @@ $(document).ready(()=>{
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiaGVucnltYW8iLCJhIjoiY2tkMHh6enBjMHJ4NTJ4bG9nYWtweDcwdiJ9.nfHhyyhan06wSZYoqdayhA'
 }).addTo(mymap);
+
   $('#createButton').click(() => {
-    $.ajax({
-      method:"POST",
-      url:"/edit/retrieve",
-      data: {username: $("#nameDisplay"), id: idArr, lat: latArr, lng: lngArr}
-    })
+    map_id++;
+    console.log("fire");
+    for(let pin in coordObj){
+      $.ajax({
+        method:"POST",
+        url:"/edit/retrieve",
+        data: {username: $("#nameDisplay").val(), id: coordObj[pin].id, map_id: map_id, lat: coordObj[pin].lat, lng: coordObj[pin].lng},
+        async: false
+      })
+    }
+
   });
   let marker;
   let content;
   let popup;
     mymap.on('click',(coord)=>{
       counter++;
-
-      latArr.push(coord.latlng.lat);
-      lngArr.push(coord.latlng.lng);
-      idArr.push(counter);
+      coordObj[counter] = {id: counter, lat: coord.latlng.lat, lng: coord.latlng.lng}
+      // latArr.push(coord.latlng.lat);
+      // lngArr.push(coord.latlng.lng);
+      // idArr.push(counter);
 
       // $.ajax({
       //   method: "POST",
@@ -41,12 +46,21 @@ $(document).ready(()=>{
         <img src="https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1649&q=80" alt="Girl in a jacket" width="50px" height="60px">`;
         popup = L.popup().setContent(content);
         marker.bindPopup(popup).openPopup();
-        marker.on("click",(data)=>{
-          console.log("???");
-          content = `<p>${data.latlng}</p>`;
-          console.log(content);
-          popup = L.popup().setContent(content);
+        marker.on("move",(data)=>{
+          //console.log(data);
+          content = data;
+          for(let i in coordObj){
+            if(coordObj[i].lat === data.oldLatLng.lat && coordObj[i].lng === data.oldLatLng.lng){
+              coordObj[i].lat = data.latlng.lat;
+              coordObj[i].lng = data.latlng.lng;
+
+            }
+          }
+          console.log(coordObj);
+          $("#coordDisplay").text(`lattitde: ${content.latlng.lat}, longitude: ${content.latlng.lng}`);
+
         })
+
       // })
     })
 

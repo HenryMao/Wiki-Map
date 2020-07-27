@@ -9,12 +9,17 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
-
+const cookieSession = require("cookie-session");
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['123']
+}));
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -48,13 +53,36 @@ app.use("/edit", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("home");
+  let loginVar = req.session.user_id;
+  console.log(loginVar);
+  res.render("home", {loginVar});
   //res.sendFile("/vagrant/midterm/wiki-map/views/index.html");
 });
+app.post("/login", (req, res) =>{
+  console.log("before assign", req.body.user)
+  req.session.user_id = req.body.user;
+  let loginVar = req.session.user_id;
+  console.log("after assign", loginVar);
+  res.redirect("/");
+})
+
 
 app.get("/profile", (req,res) => {
   res.render("profile");
 })
+
+app.post("/logout", (req, res) =>{
+  req.session.user_id = null;
+  res.redirect("/");
+})
+
+// app.post("/edit/retrieve", (req, res) =>{
+//   console.log(req.body);
+// })
+// app.get("/map", (req,res) => {
+//   res.render("map");
+// })
+
 // app.get("/edit", (req,res) => {
 //   res.render("edit");
 // })

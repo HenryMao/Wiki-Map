@@ -18,14 +18,23 @@ $(document).ready(() => {
   //     console.log(err);
   //   })
   // })
-  $("#login").on("submit", function(event) {
-    event.preventDefault();
-    $("#dropHeader").slideDown(400);
-    $("#greetings").prepend(`<h2>Hi ${$("#usernameField").val()}!</h2>`);
-    $("#nameDisplay").text(`${$("#usernameField").val()}`);
-    $("#usernameField").hide();
-    $("#profileLink").removeClass("hide");
-  })
+
+  // $("#login").on("submit", function(event) {
+  //   event.preventDefault();
+  //   $("#dropHeader").slideDown(400);
+  //   $("#greetings").prepend(`<h2>Hi ${$("#usernameField").val()}!</h2>`);
+
+  //   $("#usernameField").hide();
+  //   $("#profileLink").show();
+
+  //   $("#nameDisplay").text(`${$("#usernameField").val()}`);
+  //   $.ajax({
+  //     method:"POST",
+  //     url: "/login",
+  //     data: {user:$("#usernameField").val()}
+  //   })
+  // })
+
 
 
 })
