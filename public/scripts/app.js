@@ -4,7 +4,7 @@ $(document).ready(function(){
 
       $.ajax({
         method: "GET",
-        url: "/test"
+        url: "/map/pins"
       }).done((res) => {
 
         let mymap = L.map('map').setView([res.result[0].latitude, res.result[0].longitude], 13);

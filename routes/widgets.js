@@ -12,9 +12,9 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
-  router.post("/", (req, res) => {
+  router.post("/create", (req, res) => {
     console.log(req);
-    let insert = `INSERT INTO maps (id, latitude, longitude)
+    let insert = `INSERT INTO pins (id, latitude, longitude)
     VALUES (${req.body.id},${req.body.lat},${req.body.lng}) RETURNING *`;
     db.query(insert)
       .then(data => {
@@ -27,8 +27,18 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  router.get("/",(req,res) =>{
+    res.render('edit');
+  })
   return router;
 };
+
+
+
+
+
+
+
 
 
 

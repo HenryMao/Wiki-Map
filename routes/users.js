@@ -9,8 +9,8 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM maps;`)
+  router.get("/pins", (req, res) => {
+    db.query(`SELECT * FROM pins;`)
       .then(data => {
         const result = data.rows;
         res.json({ result });
@@ -21,5 +21,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  router.get("/",(req,res) =>{
+    res.render('map');
+  })
   return router;
 };
