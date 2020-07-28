@@ -52,18 +52,19 @@ app.use("/edit", widgetsRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+app.post("/login", (req, res) =>{
+  req.session.user_id = req.body.user;
+  let loginVar = req.session.user_id;
+  console.log(loginVar);
+  res.redirect("/");
+})
+
 app.get("/", (req, res) => {
   let loginVar = req.session.user_id;
   console.log(loginVar);
   res.render("home", {loginVar});
   //res.sendFile("/vagrant/midterm/wiki-map/views/index.html");
 });
-app.post("/login", (req, res) =>{
-  console.log("before assign", req.body.user)
-  let loginVar = req.session.user_id;
-  res.redirect("/");
-})
-
 
 app.get("/profile", (req,res) => {
   let loginVar = req.session.user_id;
@@ -86,6 +87,12 @@ app.get("/map", (req,res) => {
 // app.get("/edit", (req,res) => {
 //   res.render("edit");
 // })
+app.get("/edit",(req,res) =>{
+  let loginVar = req.session.user_id;
+  console.log(loginVar);
+  res.render('edit', {loginVar});
+})
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

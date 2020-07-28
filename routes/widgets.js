@@ -14,18 +14,21 @@ module.exports = (db) => {
 
   router.post("/retrieve", (req, res) => {
     //console.log(req);
-    let insert = `INSERT INTO pins (id, map_id, username, latitude, longitude)
-    VALUES (${req.body.id}, ${req.body.map_id}, ${req.body.username}, ${req.body.lat}, ${req.body.lng});`;
-    console.log(insert);
-    db.query(insert)
+    let userN = req.body.username;
+    let insert = `INSERT INTO pins (id, mapid, username, latitude, longitude)
+    VALUES ($1, $2, $3, $4, $5);`;
+    // console.log(insert);
+    db.query(insert, [req.body.id, req.body.map_id, userN, req.body.lat, req.body.lng])
       .then(data => {
         const pinned = data.rows;
-        console.log(pinned);
-        res.json({ pinned });
+        // console.log(pinned);
+        // res.json({ pinned });
+        res.end();
       })
       .catch(err => {
         res
           .status(500)
+            console.log(err)
           .json({ error: err.message });
           throw err;
       });
@@ -39,9 +42,6 @@ module.exports = (db) => {
   //     res.end();
   //   })
   // })
-  router.get("/",(req,res) =>{
-    res.render('edit');
-  })
 
 
   return router;
