@@ -21,8 +21,10 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  // router.get("/",(req,res) =>{
-  //   res.render('map');
-  // })
+  router.get("/",(req,res) =>{
+    res.render('map');
+  })
+
+  
   return router;
 };
