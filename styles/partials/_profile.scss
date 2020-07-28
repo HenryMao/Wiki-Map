@@ -1,4 +1,19 @@
 .container-client {
-  //display: flex;
+  display: flex;
   background: aliceblue;
+  flex-direction: column;
+  border: solid;
+  border-radius: 15px;
+  border-color: lightgreen;
+  padding: 10px;
  }
+.container-client header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.container-client hr {
+  border-top: solid 5px;
+  width: 99%;
+}
