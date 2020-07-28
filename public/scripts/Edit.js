@@ -15,11 +15,12 @@ $(document).ready(()=>{
   $('#createButton').click(() => {
     map_id++;
     console.log("fire");
+    console.log($("#nameDisplay").text());
     for(let pin in coordObj){
       $.ajax({
         method:"POST",
         url:"/edit/retrieve",
-        data: {username: $("#nameDisplay").val(), id: coordObj[pin].id, map_id: map_id, lat: coordObj[pin].lat, lng: coordObj[pin].lng},
+        data: {username: $("#nameDisplay").text(), id: coordObj[pin].id, map_id: map_id, lat: coordObj[pin].lat, lng: coordObj[pin].lng},
         async: false
       })
     }

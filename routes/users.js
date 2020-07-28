@@ -13,6 +13,8 @@ module.exports = (db) => {
     db.query(`SELECT * FROM pins;`)
       .then(data => {
         const result = data.rows;
+        console.log("wtf?");
+        console.log(result);
         res.json({ result });
       })
       .catch(err => {
