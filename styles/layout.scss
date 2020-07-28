@@ -1,9 +1,14 @@
 @import 'partials/_profile';
+@import 'partials/_search';
+@import 'partials/_variables';
 
 body {
 
   h1 {
-    color: rebeccapurple;
+    color: $border-brown;
+  }
+  h2 {
+    color: $background-grey;
   }
 }
 
@@ -12,10 +17,12 @@ body {
 
 }
 
-
-
 #editMapFoot{
   display:flex;
   justify-content: space-between;
   flex-direction: row;
 }
+
+// #nameDisplay {
+//   padding-right: 10px;
+// }
