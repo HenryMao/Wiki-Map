@@ -1,9 +1,10 @@
+@import 'partials/_variables';
 
 .searchbar{
   margin-bottom: auto;
   margin-top: auto;
   height: 60px;
-  background-color: #AFA9B8;
+  background-color: $background-grey;
   border-radius: 30px;
   padding: 10px;
   }
@@ -22,13 +23,13 @@
   .searchbar:hover > .search_input{
   padding: 0 10px;
   width: 90%;
-  caret-color:red;
+  caret-color: $border-brown;
   transition: width 0.4s linear;
   }
 
   .searchbar:hover > .search_icon{
   background: white;
-  color: #A66E28;
+  color: $border-brown;
   }
 
   .search_icon{

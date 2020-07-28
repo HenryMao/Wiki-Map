@@ -1,13 +1,14 @@
 @import 'partials/_profile';
 @import 'partials/_search';
+@import 'partials/_variables';
 
 body {
 
   h1 {
-    color: #A66E28;
+    color: $border-brown;
   }
   h2 {
-    color: #AFA9B8;
+    color: $background-grey;
   }
 }
 
