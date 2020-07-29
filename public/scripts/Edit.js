@@ -11,30 +11,21 @@ $(document).ready(()=>{
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiaGVucnltYW8iLCJhIjoiY2tkMHh6enBjMHJ4NTJ4bG9nYWtweDcwdiJ9.nfHhyyhan06wSZYoqdayhA'
 }).addTo(mymap);
-
-
-
   let marker;
   let content;
   let popup;
     mymap.on('click',(coord)=>{
       counter++;
       coordObj[counter] = {id: counter, lat: coord.latlng.lat, lng: coord.latlng.lng}
-      // latArr.push(coord.latlng.lat);
-      // lngArr.push(coord.latlng.lng);
-      // idArr.push(counter);
 
-      // $.ajax({
-      //   method: "POST",
-      //   url: "/edit/create",
-      //   data: {username: $("#nameDisplay"), id: counter, lat: coord.latlng.lat, lng: coord.latlng.lng}
-      // }).done((res) => {
         marker = L.marker([coord.latlng.lat, coord.latlng.lng], {draggable: true})
         marker.addTo(mymap);
         content = `
-        <img src="https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1649&q=80" alt="Girl in a jacket" width="50px" height="60px">`;
+        <input class="form-control" id="pinNote" type="text" placeholder="pin Title">
+        <button>click</button>`;
         popup = L.popup().setContent(content);
         marker.bindPopup(popup).openPopup();
+
         marker.on("move",(data)=>{
           //console.log(data);
           content = data;
