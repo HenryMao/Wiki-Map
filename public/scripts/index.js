@@ -2,10 +2,7 @@ const createCardElement = function(map_id) {
   // const { user, content, created_at } = card;
   // const xssSafe = escape(content.text);
   let $card = `<div class="card">
-  <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 200px">
-    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-      style="border:0" allowfullscreen></iframe>
-  </div>
+  <img class="card-img-top" src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:-113.798812,52.281247&zoom=12&apiKey=9957cdced17242a3b22931a4118f36ba" alt="6010 45 Av, Red Deer, AB, Canada" alt="Card image cap">
   <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/map/${map_id}" method="POST">
     <button class="GoToMap" type="submit">More</button>
   </form>
@@ -91,3 +88,30 @@ $(document).ready(() => {
   //     data: {user:$("#usernameField").val()}
   //   })
   // })
+  `<div class="card">
+  <img class="card-img-top" src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:-113.798812,52.281247&zoom=12&apiKey=9957cdced17242a3b22931a4118f36ba" alt="6010 45 Av, Red Deer, AB, Canada" alt="Card image cap">
+  <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/map/${map_id}" method="POST">
+    <button class="GoToMap" type="submit">More</button>
+  </form>
+  <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>`
+
+  `<div class="card">
+  <img class="card-img-top" src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:${longitude},${latitude}&zoom=12&apiKey=9957cdced17242a3b22931a4118f36ba" alt="6010 45 Av, Red Deer, AB, Canada" alt="Card image cap">
+  <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/map/${map_id}" method="POST">
+    <button class="GoToMap" type="submit">More</button>
+  </form>
+  <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>`
