@@ -21,7 +21,6 @@ module.exports = (db) => {
         let loginVar = "henrie";
         mapLoad = result;
         // res.json({ result });
-
       })
       .catch(err => {
         console.log("error here");

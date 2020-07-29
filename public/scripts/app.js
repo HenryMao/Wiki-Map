@@ -14,13 +14,21 @@ $(document).ready(function(){
           accessToken: 'pk.eyJ1IjoiaGVucnltYW8iLCJhIjoiY2tkMHh6enBjMHJ4NTJ4bG9nYWtweDcwdiJ9.nfHhyyhan06wSZYoqdayhA'
       }).addTo(mymap);
           let marker;
+          let title;
+          let mapdes;
           for(let pin in res){
             marker = L.marker([res[pin].latitude, res[pin].longitude])
-          marker.addTo(mymap);
-          var popup = L.popup().setContent("okay nice popup");
-          marker.bindPopup(popup).openPopup();
+            marker.addTo(mymap);
+            let content = res[pin].pinnote;
+            title = res[pin].maptitle;
+            mapdes = res[pin].mapdes;
+            //console.log(res[pin]);
+            var popup = L.popup().setContent(`<p>${content}</p>`);
+            marker.bindPopup(popup).openPopup();
           }
-        console.log(res);
+          $("#titleDes").text(title);
+          $("#mapDesDis").text(mapdes);
+        // console.log(res);
       });;
 
 
