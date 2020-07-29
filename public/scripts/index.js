@@ -1,6 +1,12 @@
 $(document).ready(() => {
-const data = [
+
+
+  const data = [
   {name: 'card1'},
+  {name: 'card2'},
+  {name: 'card3'},
+  {name: 'card4'},
+  {name: 'card5'}
 
 ]
 
@@ -29,7 +35,7 @@ const data = [
 
 const renderCards = (data)=>{
   data.forEach((item)=>{
-    $('.card-deck').append(createCardElement(item))
+    $('.card-columns').append(createCardElement(item))
   })
 }
 
