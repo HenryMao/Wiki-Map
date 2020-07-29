@@ -1,6 +1,7 @@
 $(document).ready(() => {
 
 
+
   const data = [
   {name: 'card1'},
   {name: 'card2'},
@@ -43,7 +44,26 @@ renderCards(data)
 
 })
 
-// $("#card1").click(() => {
+
+
+  let maps = {};
+  $.ajax({
+    method:"GET",
+    url:"/load"
+  }).done(res => {
+    for(pin in res){
+      if (!maps[res[pin].mapid]) {
+        maps[res[pin].mapid] = 1;
+      }
+
+    }
+    console.log(maps);
+
+  })
+
+
+
+
   //   $.ajax({
   //     method: "GET",
   //       url: "/map"
