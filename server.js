@@ -69,13 +69,20 @@ app.get("/", (req, res) => {
 app.get("/profile", (req,res) => {
   let loginVar = req.session.user_id;
   res.render("profile", {loginVar});
-})
+});
 
 app.post("/logout", (req, res) =>{
   req.session.user_id = null;
   res.redirect("/");
-})
-
+});
+app.get("/load", (req,res) => {
+  let query = `SELECT * FROM pins;`
+  db.query(query)
+  .then(data => {
+    let test = data.rows
+    res.json(test);
+    })
+});
 // app.post("/edit/retrieve", (req, res) =>{
 //   console.log(req.body);
 // })
@@ -87,9 +94,10 @@ app.get("/map", (req,res) => {
 // app.get("/edit", (req,res) => {
 //   res.render("edit");
 // })
+
 app.get("/edit",(req,res) =>{
   let loginVar = req.session.user_id;
-  console.log(loginVar);
+  // console.log(loginVar);
   res.render('edit', {loginVar});
 })
 

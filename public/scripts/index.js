@@ -1,4 +1,20 @@
 $(document).ready(() => {
+  let maps = {};
+  $.ajax({
+    method:"GET",
+    url:"/load"
+  }).done(res => {
+    for(pin in res){
+      if (!maps[res[pin].mapid]) {
+        maps[res[pin].mapid] = 1;
+      }
+
+    }
+    console.log(maps);
+
+  })
+
+
   // $("#card1").click(() => {
   //   $.ajax({
   //     method: "GET",
