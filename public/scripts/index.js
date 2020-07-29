@@ -1,8 +1,8 @@
-const createCardElement = function(map_id) {
+const createCardElement = function(map_id, longitude, latitude) {
   // const { user, content, created_at } = card;
   // const xssSafe = escape(content.text);
   let $card = `<div class="card">
-  <img class="card-img-top" src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:-113.798812,52.281247&zoom=12&apiKey=9957cdced17242a3b22931a4118f36ba" alt="6010 45 Av, Red Deer, AB, Canada" alt="Card image cap">
+  <img class="card-img-top" src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:${longitude[0]},${latitude[0]}&zoom=12&apiKey=9957cdced17242a3b22931a4118f36ba" alt="Static Map Holder">
   <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/map/${map_id}" method="POST">
     <button class="GoToMap" type="submit">More</button>
   </form>
