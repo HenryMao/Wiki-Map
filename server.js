@@ -16,6 +16,7 @@ const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+
 app.use(cookieSession({
   name: 'session',
   keys: ['123']
@@ -55,7 +56,7 @@ app.use("/edit", widgetsRoutes(db));
 app.post("/login", (req, res) =>{
   req.session.user_id = req.body.user;
   let loginVar = req.session.user_id;
-  console.log(loginVar);
+  // console.log(loginVar);
   res.redirect("/");
 })
 
@@ -75,6 +76,7 @@ app.post("/logout", (req, res) =>{
   req.session.user_id = null;
   res.redirect("/");
 });
+
 app.get("/load", (req,res) => {
   let query = `SELECT * FROM pins;`
   db.query(query)
@@ -83,11 +85,14 @@ app.get("/load", (req,res) => {
     res.json(test);
     })
 });
-// app.post("/edit/retrieve", (req, res) =>{
+
+// app.post("/mapLoad", (req, res) =>{
 //   console.log(req.body);
 // })
+
 app.get("/map", (req,res) => {
   let loginVar = req.session.user_id;
+  console.log("before loading map");
   res.render("map", {loginVar});
 })
 

@@ -9,21 +9,31 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/pins", (req, res) => {
-    db.query(`SELECT * FROM pins;`)
+  let mapLoad;
+
+  router.post("/:mapid", (req, res) => {
+    console.log(req.params.mapid);
+    let query =`SELECT * FROM pins WHERE mapid = $1;`;
+    db.query(query, [req.params.mapid])
       .then(data => {
         const result = data.rows;
-        console.log("wtf?");
-        console.log(result);
-        res.json({ result });
+
+        let loginVar = "henrie";
+        mapLoad = result;
+        // res.json({ result });
+
       })
       .catch(err => {
+        console.log("error here");
         res
           .status(500)
-          .json({ error: err.message });
+          .json({ error: err.message })
+          throw err;
       });
   });
-
+  router.get("/specific", (req, res) =>{
+    res.json(mapLoad);
+  })
 
 
   return router;
