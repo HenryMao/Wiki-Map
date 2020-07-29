@@ -13,16 +13,27 @@ body {
 }
 
 #map {
-  height: 600px;
+  height: 400px;
 
 }
+.editMappinText{
+  display:flex;
+  justify-content: space-between;
+  flex-direction: row;
 
+}
 #editMapFoot{
   display:flex;
   justify-content: space-between;
   flex-direction: row;
 }
-
+#titleDes{
+  text-align: center;
+}
+#mapDesDis{
+  text-align: center;
+  border-style: dashed;
+}
 // #nameDisplay {
 //   padding-right: 10px;
 // }

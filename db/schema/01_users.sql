@@ -32,9 +32,9 @@ CREATE TABLE pins (
   id SERIAL PRIMARY KEY NOT NULL,
   mapid INTEGER,
   username VARCHAR(255),
-  -- name VARCHAR(255),
-  -- description VARCHAR(255),
-  -- img VARCHAR(255),
+  mapTitle VARCHAR(255),
+  mapDes VARCHAR(255),
+  pinNote VARCHAR(255),
   latitude float,
   longitude float
 );

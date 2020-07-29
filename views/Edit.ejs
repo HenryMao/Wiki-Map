@@ -42,8 +42,9 @@
 
   <div class="container-fluid">
     <div>
-      <input class="form-control form-control-lg" id="Maptitle"type="text" placeholder="Map Title">
+      <input class="form-control form-control-lg" id="mapTitle"type="text" placeholder="Map Title">
     </div>
+    <br>
     <div id="map"></div>
     <br>
     <div id = "editMapFoot">
@@ -52,11 +53,13 @@
       <button class="btn btn-outline-success my-2 my-sm-0" id = "newMap" type="submit">New Map</button>
     </div>
     <br>
-    <button class="btn btn-outline-success my-2 my-sm-0" id = "backToProfile" type="submit">Back</button>
-    <br>
+    <div class = "editMappinText">
+      <button class="btn btn-outline-success my-2 my-sm-0" id = "backToProfile" type="submit">Back</button>
+      <input class="form-control" id="pinNote" type="text" placeholder="Marker description">
+    </div>
     <br>
     <div>
-      <input class="form-control" id="mapDescription" type="search" placeholder="description" aria-label="Search" name="user">
+      <input class="form-control" id="mapDescription" type="text" placeholder="Map Description">
     </div>
   </div>
 

@@ -16,14 +16,16 @@ $(document).ready(()=>{
   let popup;
     mymap.on('click',(coord)=>{
       counter++;
-      coordObj[counter] = {id: counter, lat: coord.latlng.lat, lng: coord.latlng.lng}
+      content = $("#pinNote").val();
+      coordObj[counter] = {id: counter, pinNote: content, lat: coord.latlng.lat, lng: coord.latlng.lng}
 
         marker = L.marker([coord.latlng.lat, coord.latlng.lng], {draggable: true})
         marker.addTo(mymap);
-        content = `
-        <input class="form-control" id="pinNote" type="text" placeholder="pin Title">
-        <button>click</button>`;
-        popup = L.popup().setContent(content);
+
+
+        // console.log($("#pinNote").val());
+        $("#pinNote").val("");
+        popup = L.popup().setContent(`<p>${content}</p>`);
         marker.bindPopup(popup).openPopup();
 
         marker.on("move",(data)=>{
@@ -42,7 +44,6 @@ $(document).ready(()=>{
         marker.on('dblclick',() =>{
           marker.remove();
           delete coordObj[counter];
-          console.log(coordObj);
         })
 
       // })
@@ -70,16 +71,21 @@ $(document).ready(()=>{
         map_id++;
         // console.log("fire");
         // console.log($("#nameDisplay").text());
+        let mapDescription = $("#mapDescription").val();
+        console.log(mapDescription);
+        let mapTitle = $("#mapTitle").val();
         for(let pin in coordObj){
           $.ajax({
             method:"POST",
             url:"/edit/retrieve",
-            data: {username: $("#nameDisplay").text(), id: coordObj[pin].id, map_id: map_id, lat: coordObj[pin].lat, lng: coordObj[pin].lng},
+            data: {username: $("#nameDisplay").text(), mapDes: mapDescription, mapTitle: mapTitle, pinNote: coordObj[pin].pinNote, id: coordObj[pin].id, map_id: map_id, lat: coordObj[pin].lat, lng: coordObj[pin].lng},
             async: false
           })
         }
         coordObj = {};
         mymap.remove();
+        $("#mapTitle").val("");
+        $("#mapDescription").val("");
       });
     })
 

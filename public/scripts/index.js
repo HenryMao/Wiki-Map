@@ -17,7 +17,7 @@ const createCardElement = function(map_id, longitude, latitude) {
 
   return $card;
 };
-
+//res == {pinid: {id:1, map_id: 1, maptitle: something, mapdes: something, username: someone, lattitude: 1, longitude: 1, pinnote: somenote}}
 $(document).ready(() => {
   let maps = {};
   $.ajax({
