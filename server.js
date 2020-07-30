@@ -20,7 +20,7 @@ app.use(cookieSession({
   name: 'session',
   keys: ['123']
 }));
-
+// global object initiated to move data across endpoints
 let liked = {};
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -47,91 +47,77 @@ const widgetsRoutes = require("./routes/widgets");
 // Note: Feel free to replace the example routes below with your own
 app.use("/map", usersRoutes(db));
 app.use("/edit", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
 
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
+//endpoint for when user clicks login button
 app.post("/login", (req, res) =>{
   req.session.user_id = req.body.user;
   let loginVar = req.session.user_id;
-  // console.log(loginVar);
   res.redirect("/");
-})
-
+});
+//endpoint for when the home page loads
 app.get("/", (req, res) => {
   let loginVar = req.session.user_id;
-  //console.log(loginVar);
   res.render("home", {loginVar});
-  //res.sendFile("/vagrant/midterm/wiki-map/views/index.html");
 });
-
+//endpoint for when profile page loads
 app.get("/profile", (req,res) => {
   let loginVar = req.session.user_id;
   res.render("profile", {loginVar});
 });
-
+//endpoint for when logout button is pressed
 app.post("/logout", (req, res) =>{
   req.session.user_id = null;
   res.redirect("/");
 });
-
+//endpoint for when anywhere on the site needs to load the pins table
 app.get("/load", (req,res) => {
-  let query = `SELECT * FROM pins;`
+  let query = `SELECT * FROM pins;`;
   db.query(query)
-  .then(data => {
-    let test = data.rows
-    res.json(test);
-    })
+    .then(data => {
+      let test = data.rows;
+      res.json(test);
+    });
 });
+//endpoint for when the profile page tries to load the favourite related data
 app.get("/like", (req, res)=>{
-  let query = `SELECT * FROM maps;`
+  let query = `SELECT * FROM maps;`;
   db.query(query)
-  .then(data =>{
-    res.json(data.rows);
-  });
+    .then(data =>{
+      res.json(data.rows);
+    });
 });
+//endpoint for when user clicks the like button on the home page
 app.post("/like/:user/:mapid", (req, res) =>{
   //console.log(req.params);
   let insert = `INSERT INTO maps (id, username)
   VALUES ($1, $2) RETURNING *;`;
-  if(!liked[req.params.mapid]){
+  if (!liked[req.params.mapid]) {
     db.query(insert, [req.params.mapid, req.params.user])
-    .then(data =>{
-      console.log("inserted into maps");
-      res.redirect("/");
+      .then(data =>{
+        console.log("inserted into maps");
+        res.redirect("/");
       //res.end();
-    });
+      });
   }
-
-    liked[req.params.mapid] = req.params.user;
-    console.log(liked);
-    res.redirect("/");
-    let loginVar = req.session.user_id;
-    // res.render("profile", {loginVar});
-  // let insert =
-  // db.query()
+  //using a variable liked to move information across endpoints
+  liked[req.params.mapid] = req.params.user;
+  console.log(liked);
+  res.redirect("/");
+  let loginVar = req.session.user_id;
 });
-// app.post("/mapLoad", (req, res) =>{
-//   console.log(req.body);
-// })
 
+//endpoint for when the map page loads
 app.get("/map", (req,res) => {
   let loginVar = req.session.user_id;
   console.log("before loading map");
   res.render("map", {loginVar});
-})
+});
 
-// app.get("/edit", (req,res) => {
-//   res.render("edit");
-// })
-
+//endpoint for when the create page loads
 app.get("/edit",(req,res) =>{
   let loginVar = req.session.user_id;
-  // console.log(loginVar);
   res.render('edit', {loginVar});
-})
+});
 
 
 app.listen(PORT, () => {

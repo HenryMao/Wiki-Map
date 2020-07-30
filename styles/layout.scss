@@ -15,13 +15,13 @@ body {
 
 #map {
   height: 400px;
-
 }
 .editMappinText{
   display:flex;
   justify-content: space-between;
   flex-direction: row;
-
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 #editMapFoot{
   display:flex;
@@ -55,6 +55,15 @@ body {
 }
 
 .edit-header{
-  height: 140px;
+  height: 30px;
   margin-bottom: 16px;
+}
+button.GoToMap{
+  margin-bottom: 5px;
+  width: 75px;
+}
+
+button.like{
+  margin-bottom: 5px;
+  width: 75px;
 }
