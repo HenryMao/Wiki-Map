@@ -8,12 +8,12 @@ const createCardElement = function(map_id, longitude, latitude, title, descripti
   <div class="buttonDivHome">
     <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/map/${map_id}" method="POST">
 
-      <button type="submit" class="btn btn-info btn-sm GoToMap mt-1 ml-1">Expand</button>
+      <button type="submit" class="btn btn-info btn-sm GoToMap m-1">Expand</button>
     </form>
 
     <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/like/${user}/${map_id}" method="POST">
 
-      <button type="submit" class="btn btn-info btn-sm like mt-1 mr-1" >Like</button>
+      <button type="submit" class="btn btn-info btn-sm like m-1" >Like</button>
     </form>
 
   </div>
