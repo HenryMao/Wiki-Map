@@ -6,10 +6,20 @@ const createCardElement = function(map_id, longitude, latitude, title, descripti
   <img class="card-img-top" src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:${longitude},${latitude}&zoom=11&apiKey=9957cdced17242a3b22931a4118f36ba" alt="Static Map Holder">
   <div class="buttonDivHome">
     <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/map/${map_id}" method="POST">
+<<<<<<< HEAD
+
+      <button type="submit" class="btn btn-info btn-sm GoToMap m-1">Expand</button>
+=======
       <button type="submit" class="btn btn-info btn-sm GoToMap mt-1 ml-1">Expand</button>
+>>>>>>> 36bc4e4c749c6ac4bbbc96653388c0b2b2071b9e
     </form>
     <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/like/${user}/${map_id}" method="POST">
+<<<<<<< HEAD
+
+      <button type="submit" class="btn btn-info btn-sm like m-1" >Like</button>
+=======
       <button type="submit" class="btn btn-info btn-sm like mt-1 mr-1" >Like</button>
+>>>>>>> 36bc4e4c749c6ac4bbbc96653388c0b2b2071b9e
     </form>
 
   </div>
