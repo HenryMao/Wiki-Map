@@ -13,24 +13,28 @@ $(document).ready(()=>{
   }).addTo(mymap);
   let marker;
   let content;
+  let image;
   let popup;
   mymap.on('click',(coord)=>{
     counter++;
     content = $("#pinNote").val();
-    coordObj[counter] = {id: counter, pinNote: content, lat: coord.latlng.lat, lng: coord.latlng.lng};
+    image = $("#imgurl").val();
+    coordObj[counter] = {id: counter, pinNote: content, img: image, lat: coord.latlng.lat, lng: coord.latlng.lng};
 
     marker = L.marker([coord.latlng.lat, coord.latlng.lng], {draggable: true});
     marker.addTo(mymap);
 
 
-    // console.log($("#pinNote").val());
     $("#pinNote").val("");
-    popup = L.popup().setContent(`<p>${content}</p>`);
+    $("#imgurl").val("");
+    console.log(content);
+    console.log(image);
+    popup = L.popup().setContent(`<p style= "text-align:center">${content}</p> <img src="${image}" width="50" height="60">`);
     marker.bindPopup(popup).openPopup();
 
     marker.on("move",(data)=>{
       //console.log(data);
-      content = data;
+
       for (let i in coordObj) {
         if (coordObj[i].lat === data.oldLatLng.lat && coordObj[i].lng === data.oldLatLng.lng) {
           coordObj[i].lat = data.latlng.lat;
@@ -38,7 +42,7 @@ $(document).ready(()=>{
         }
       }
       // console.log(coordObj);
-      $("#coordDisplay").text(`lattitde: ${content.latlng.lat}, longitude: ${content.latlng.lng}`);
+      $("#coordDisplay").text(`lattitde: ${data.latlng.lat}, longitude: ${data.latlng.lng}`);
 
     });
     marker.on('dblclick',() =>{
@@ -78,8 +82,8 @@ $(document).ready(()=>{
         $.ajax({
           method:"POST",
           url:"/edit/retrieve",
-          data: {username: $("#nameDisplay").text(), mapDes: mapDescription, mapTitle: mapTitle, pinNote: coordObj[pin].pinNote, id: coordObj[pin].id, map_id: map_id, lat: coordObj[pin].lat, lng: coordObj[pin].lng},
-          async: false
+          data: {username: $("#nameDisplay").text(), mapDes: mapDescription, mapTitle: mapTitle, pinNote: coordObj[pin].pinNote, img: coordObj[pin].img, id: coordObj[pin].id, map_id: map_id, lat: coordObj[pin].lat, lng: coordObj[pin].lng}
+
         });
       }
       coordObj = {};

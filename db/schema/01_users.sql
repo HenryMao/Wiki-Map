@@ -35,6 +35,7 @@ CREATE TABLE pins (
   mapTitle VARCHAR(255),
   mapDes VARCHAR(255),
   pinNote VARCHAR(255),
+  imag VARCHAR(255),
   latitude float,
   longitude float
 );

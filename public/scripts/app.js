@@ -24,7 +24,8 @@ $(document).ready(function() {
       title = res[pin].maptitle;
       mapdes = res[pin].mapdes;
       //console.log(res[pin]);
-      let popup = L.popup().setContent(`<p>${content}</p>`);
+      let image = res[pin].imag;
+      let popup = L.popup().setContent(`<p>${content}</p> <img src="${image}" width="50" height="60">`);
       marker.bindPopup(popup).openPopup();
     }
     $("#titleDes").text(title);

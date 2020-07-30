@@ -13,23 +13,19 @@ const router  = express.Router();
 module.exports = (db) => {
 
   router.post("/retrieve", (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     let userN = req.body.username;
-    let insert = `INSERT INTO pins (id, mapid, username, mapTitle, mapDes, pinNote, latitude, longitude)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;`;
+    let insert = `INSERT INTO pins (id, mapid, username, mapTitle, mapDes, pinNote, imag, latitude, longitude)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`;
     // console.log(insert);
-    db.query(insert, [req.body.id, req.body.map_id, userN, req.body.mapTitle, req.body.mapDes, req.body.pinNote, req.body.lat, req.body.lng])
+    db.query(insert, [req.body.id, req.body.map_id, userN, req.body.mapTitle, req.body.mapDes, req.body.pinNote, req.body.img, req.body.lat, req.body.lng])
       .then(data => {
         const pinned = data.rows;
         // console.log(pinned);
         res.json({ pinned });
-      })
-      .catch(err => {
-        res
-          .status(500)
-            console.log(err)
-          .json({ error: err.message });
-          throw err;
+      }).catch(err => {
+          console.log(err);
+          // throw err;
       });
   });
   // router.post("/retrieve", (req,res) =>{
