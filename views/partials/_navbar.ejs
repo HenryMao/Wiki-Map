@@ -15,7 +15,9 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <form class="form-inline my-2 my-lg-0" id = "homeButton" action ="/" method="GET">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
+          <div class="card-body gradient-buttons">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Home</button>
+          </div>
         </form>
         <!-- <a class="nav-link" id = "homeButton" href="/">Home<span class="sr-only">(current)</span></a> -->
       </li>
@@ -24,7 +26,9 @@
 
         <%if(loginVar){%>
         <form class="form-inline my-2 my-lg-0" id = "profilePage" action ="/profile" method="GET">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Profile</button>
+          <div class="card-body gradient-buttons">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Profile</button>
+        </div>
         </form>
         <%}%>
       </li>
@@ -32,12 +36,16 @@
     <%if(loginVar){%>
       <span class="pr-2" id="nameDisplay"><%=loginVar%></span>
       <form class="form-inline my-2 my-lg-0" id = "logout" action ="/logout" method="POST">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        <div class="card-body gradient-buttons">
+        <button class="btn btn-outline-secondary gradient-buttons my-2 my-sm-0" type="submit">Logout</button>
+        </div>
       </form>
     <%} else {%>
     <form class="form-inline my-2 my-lg-0" id = "login" action ="/login" method="POST">
       <input class="form-control mr-sm-2" id="usernameField" type="search" placeholder="Username" aria-label="Search" name="user">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+      <div class="card-body gradient-buttons">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Login</button>
+      </div>
     </form>
     <%}%>
   </div>
