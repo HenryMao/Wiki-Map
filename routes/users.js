@@ -17,8 +17,6 @@ module.exports = (db) => {
     db.query(query, [req.params.mapid])
       .then(data => {
         const result = data.rows;
-
-        let loginVar = "henrie";
         mapLoad = result;
         // res.json({ result });
       })
@@ -33,7 +31,6 @@ module.exports = (db) => {
   router.get("/specific", (req, res) =>{
     res.json(mapLoad);
   })
-
 
   return router;
 };
