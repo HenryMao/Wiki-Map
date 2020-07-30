@@ -9,14 +9,14 @@
     <path d="M6 1a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H7a1 1 0 0 1-1-1zm.94 6.44l4.95-2.83-2.83 4.95-4.95 2.83 2.83-4.95z"/>
   </svg>
   </div>
-  <a class="navbar-brand" href="#">Vancouver Maps Collection</a>
+  <a class="navbar-brand" href="/">Vancouver Maps Collection</a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <form class="form-inline my-2 my-lg-0" id = "homeButton" action ="/" method="GET">
-          <div class="card-body gradient-buttons">
-          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Home</button>
+          <div class=" gradient-buttons">
+          <button class="btn btn-outline-secondary my-2 my-sm-0 mr-2" type="submit">Home</button>
           </div>
         </form>
         <!-- <a class="nav-link" id = "homeButton" href="/">Home<span class="sr-only">(current)</span></a> -->
@@ -25,7 +25,7 @@
 
         <%if(loginVar){%>
         <form class="form-inline my-2 my-lg-0" id = "profilePage" action ="/profile" method="GET">
-          <div class="card-body gradient-buttons">
+          <div class=" gradient-buttons">
           <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Profile</button>
         </div>
         </form>
@@ -35,14 +35,14 @@
     <%if(loginVar){%>
       <span class="pr-2" id="nameDisplay"><%=loginVar%></span>
       <form class="form-inline my-2 my-lg-0" id = "logout" action ="/logout" method="POST">
-        <div class="card-body gradient-buttons">
+        <div class="gradient-buttons">
         <button class="btn btn-outline-secondary gradient-buttons my-2 my-sm-0" type="submit">Logout</button>
         </div>
       </form>
     <%} else {%>
     <form class="form-inline my-2 my-lg-0" id = "login" action ="/login" method="POST">
       <input class="form-control mr-sm-2" id="usernameField" type="search" placeholder="Username" aria-label="Search" name="user">
-      <div class="card-body gradient-buttons">
+      <div class=" gradient-buttons">
       <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Login</button>
       </div>
     </form>

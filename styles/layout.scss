@@ -28,9 +28,11 @@ body {
   justify-content: space-between;
   flex-direction: row;
 }
+
 #titleDes{
   text-align: center;
 }
+
 #mapDesDis{
   text-align: center;
   // border-style: dashed;
@@ -43,3 +45,16 @@ body {
 // #nameDisplay {
 //   padding-right: 10px;
 // }
+.card:hover {
+  box-shadow: 4px 4px 11px rgba(22, 40, 59, 0.267);
+
+}
+.card-body {
+  background: linear-gradient(185deg, #86c9fc49, #fcbe6e33);
+
+}
+
+.edit-header{
+  height: 140px;
+  margin-bottom: 16px;
+}
