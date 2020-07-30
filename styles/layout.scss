@@ -35,7 +35,12 @@ body {
 
 #mapDesDis{
   text-align: center;
-  border-style: dashed;
+  // border-style: dashed;
+}
+.buttonDivHome{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 // #nameDisplay {
 //   padding-right: 10px;

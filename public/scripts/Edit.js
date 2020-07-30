@@ -29,7 +29,7 @@ $(document).ready(()=>{
     $("#imgurl").val("");
     console.log(content);
     console.log(image);
-    popup = L.popup().setContent(`<p style= "text-align:center">${content}</p> <img src="${image}" width="50" height="60">`);
+    popup = L.popup().setContent(`<p style= "text-align:center">${content}</p> <img src="${image}" width="300" height="150">`);
     marker.bindPopup(popup).openPopup();
 
     marker.on("move",(data)=>{

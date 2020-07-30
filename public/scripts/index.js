@@ -1,15 +1,29 @@
 
 
-const createCardElement = function(map_id, longitude, latitude, title, description) {
+const createCardElement = function(map_id, longitude, latitude, title, description, user) {
   // const { user, content, created_at } = card;
   // const xssSafe = escape(content.text);
   let $card = `<div class="card">
   <img class="card-img-top" src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:${longitude},${latitude}&zoom=11&apiKey=9957cdced17242a3b22931a4118f36ba" alt="Static Map Holder">
+<<<<<<< HEAD
   <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/map/${map_id}" method="POST">
     <button type="submit" class="btn btn-info btn-sm GoToMap mt-2">Expand</button>
   </form>
+=======
+  <div class="buttonDivHome">
+    <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/map/${map_id}" method="POST">
+      <button class="GoToMap" style = "border-radius:5px" type="submit">Expand</button>
+    </form>
+    <form class="form-inline my-2 my-lg-0" id = "mapPage" action ="/like/${user}/${map_id}" method="POST">
+      <button class="like" style = "border-radius:5px" type="submit">Like</button>
+    </form>
+
+  </div>
+>>>>>>> 90dd137e8148b1e4bb985fdde01f5fdde527c91b
   <div class="card-body">
+
     <h5 class="card-title">${title}</h5>
+    <h6 class="card-text">Map#${map_id}</h6>
     <p class="card-text">${description}</p>
   </div>
   <div class="card-footer">
@@ -34,8 +48,8 @@ $(document).ready(() => {
     console.log(maps);
     //this is where the loading needs to happen
     for (map in maps) {
-
-      $('.card-columns').append(createCardElement(maps[map].map_id, maps[map].lng, maps[map].lat, maps[map].title, maps[map].des));
+        //console.log(maps[map]);
+      $('.card-columns').append(createCardElement(maps[map].map_id, maps[map].lng, maps[map].lat, maps[map].title, maps[map].des, $("#nameDisplay").text()));
     }
     console.log("before click");
     $("button.GoToMap").click(() =>{
@@ -48,6 +62,14 @@ $(document).ready(() => {
         // console.log("takenn");
       });
     });
+    // $("button#like").click(()=>{
+    //   let
+    //   $.ajax({
+    //     method:"POST",
+    //     url:"/like"
+    //     data:
+    // //   });
+    // });
 
   });
 

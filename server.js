@@ -16,12 +16,12 @@ const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
-
 app.use(cookieSession({
   name: 'session',
   keys: ['123']
 }));
 
+let liked = {};
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -62,7 +62,7 @@ app.post("/login", (req, res) =>{
 
 app.get("/", (req, res) => {
   let loginVar = req.session.user_id;
-  console.log(loginVar);
+  //console.log(loginVar);
   res.render("home", {loginVar});
   //res.sendFile("/vagrant/midterm/wiki-map/views/index.html");
 });
@@ -85,7 +85,34 @@ app.get("/load", (req,res) => {
     res.json(test);
     })
 });
+app.get("/like", (req, res)=>{
+  let query = `SELECT * FROM maps;`
+  db.query(query)
+  .then(data =>{
+    res.json(data.rows);
+  });
+});
+app.post("/like/:user/:mapid", (req, res) =>{
+  //console.log(req.params);
+  let insert = `INSERT INTO maps (id, username)
+  VALUES ($1, $2) RETURNING *;`;
+  if(!liked[req.params.mapid]){
+    db.query(insert, [req.params.mapid, req.params.user])
+    .then(data =>{
+      console.log("inserted into maps");
+      res.redirect("/");
+      //res.end();
+    });
+  }
 
+    liked[req.params.mapid] = req.params.user;
+    console.log(liked);
+    res.redirect("/");
+    let loginVar = req.session.user_id;
+    // res.render("profile", {loginVar});
+  // let insert =
+  // db.query()
+});
 // app.post("/mapLoad", (req, res) =>{
 //   console.log(req.body);
 // })
