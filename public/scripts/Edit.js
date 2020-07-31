@@ -109,6 +109,7 @@ $(document).ready(()=>{
       coordObj = {};
       //remove the current map
       mymap.remove();
+      alert("New map added! You can see it on your profile or the home page. Click New map button if you want to create another!")
       //clearn all input text fields
       $("#mapTitle").val("");
       $("#mapDescription").val("");
